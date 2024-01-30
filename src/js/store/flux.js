@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			urlBase: "https://www.swapi.tech/api",
 			characters: [],
+			planets: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -50,6 +51,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 								.then((data) => {
 									setStore({
 										characters: [...getStore().characters, data.result]
+									})
+								}).catch((error) => {
+									console.log(error)
+								})
+						}
+					}).catch((error) => {
+						console.log(error)
+					})
+			},
+			getPlanets: () => {
+				fetch(`${getStore().urlBase}/planets`)
+					.then(response => response.json())
+					.then((data) => {
+						for (let item of data.results) {
+							fetch(item.url)
+								.then(response => response.json())
+								.then((data) => {
+									setStore({
+										planets: [...getStore().planets, data.result]
 									})
 								}).catch((error) => {
 									console.log(error)
