@@ -51,11 +51,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 									setStore({
 										characters: [...getStore().characters, data.result]
 									})
+								}).catch((error) => {
+									console.log(error)
 								})
 						}
-					}), catch()
+					}).catch((error) => {
+						console.log(error)
+					})
 			},
-
 		}
 	};
 };
