@@ -14,17 +14,17 @@ export const Home = () => {
 						return (
 							<div className="myCard">
 								<div>
-									<img src={`https://starwars-visualguide.com/assets/img/characters/${item.uid}.jpg`} alt="" />
+									<img style={{ width: "100%" }} src={`https://starwars-visualguide.com/assets/img/characters/${item.uid}.jpg`} alt="" />
 								</div>
-								<div className="body-text">
-									<p><strong>Nombre: </strong>{item.properties.name}</p>
-									<p><strong>Gender: </strong>{item.properties.gender}</p>
-									<p><strong>Hair Color: </strong>{item.properties.hair_color}</p>
+								<div style={{ padding: "15px" }} className="body-text">
+									<h4><strong>{item.properties.name}</strong></h4>
+									<p style={{ marginBottom: "0px" }}><strong>Gender: </strong>{item.properties.gender}</p>
+									<p style={{ marginBottom: "0px" }}><strong>Hair Color: </strong>{item.properties.hair_color}</p>
 									<p><strong>Eye Color: </strong>{item.properties.eye_color}</p>
 								</div>
-								<div className="button-footer" style={{ justifyContent: "space-between", display: "flex" }}>
+								<div className="button-footer" style={{ justifyContent: "space-between", display: "flex", padding: "15px" }}>
 									<Link to={`/characters/${item._id}`} className="btn btn-outline-primary">Learn more</Link>
-									<button className="btn btn-outline-warning">C</button>
+									<button className="btn btn-outline-warning">♡</button>
 								</div>
 							</div>
 						)
@@ -38,13 +38,14 @@ export const Home = () => {
 						return (
 							<div className="myCard">
 								<div>
-									<img src={`https://starwars-visualguide.com/assets/img/planets/${item.uid}.jpg`} alt="" />
+									<img style={{ width: "100%" }} src={`https://starwars-visualguide.com/assets/img/planets/${item.uid}.jpg`} alt="" />
 								</div>
-								<div className="body-text">
-									<p><strong>Population: </strong>{item.properties.population}</p>
-									<p><strong>Terrain: </strong>{item.properties.terrain}</p>
+								<div style={{ padding: "15px" }} className="body-text">
+									<h4><strong>{item.properties.name}</strong></h4>
+									<p style={{ marginBottom: "0px" }}><strong>Population: </strong>{item.properties.population}</p>
+									<p style={{ marginBottom: "0px" }}><strong>Terrain: </strong>{item.properties.terrain}</p>
 								</div>
-								<div className="button-footer" style={{ justifyContent: "space-between", display: "flex" }}>
+								<div className="button-footer" style={{ justifyContent: "space-between", display: "flex", padding: "15px" }}>
 									<Link to={`/planets/${item._id}`} className="btn btn-outline-primary">Learn more</Link>
 									<button className="btn btn-outline-warning">C</button>
 								</div>
