@@ -2,9 +2,12 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeart2 } from '@fortawesome/free-regular-svg-icons';
 
 export const Home = () => {
-	const { store } = useContext(Context)
+	const { store, actions } = useContext(Context)
 	return (
 		<>
 			<div className="container">
@@ -24,7 +27,13 @@ export const Home = () => {
 								</div>
 								<div className="button-footer" style={{ justifyContent: "space-between", display: "flex", padding: "15px" }}>
 									<Link to={`/characters/${item._id}`} className="btn btn-outline-primary">Learn more</Link>
-									<button className="btn btn-outline-warning">♡</button>
+									{
+										!store.favorites.includes(item)
+											?
+											<button onClick={() => actions.addOrDelFavorite(item)} className="btn btn-outline-warning"><FontAwesomeIcon icon={faHeart2} /></button>
+											:
+											<button onClick={() => actions.addOrDelFavorite(item)} className="btn btn-outline-warning" ><FontAwesomeIcon icon={faHeart} /></button>
+									}
 								</div>
 							</div>
 						)
@@ -47,7 +56,13 @@ export const Home = () => {
 								</div>
 								<div className="button-footer" style={{ justifyContent: "space-between", display: "flex", padding: "15px" }}>
 									<Link to={`/planets/${item._id}`} className="btn btn-outline-primary">Learn more</Link>
-									<button className="btn btn-outline-warning">C</button>
+									{
+										!store.favorites.includes(item)
+											?
+											<button onClick={() => actions.addOrDelFavorite(item)} className="btn btn-outline-warning">♡</button>
+											:
+											<button onClick={() => actions.addOrDelFavorite(item)} className="btn btn-outline-warning">♥</button>
+									}
 								</div>
 							</div>
 						)
